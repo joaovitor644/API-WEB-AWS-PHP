@@ -17,14 +17,14 @@ if(isset($_GET['path'])){
         $add = '';
 }
 else
-    echo "Acesse o caminho 'usuarios', exemplo: .../API-Elias/usuarios";
+    echo "Acesse o caminho , exemplo: .../banco/";
 
 $method = $_SERVER['REQUEST_METHOD'];
 
 require_once 'db.class.php';
 
-if(isset($base) && $base == 'usuarios'){
-    if($method == "GET"){
+if(isset($base) && $base == 'banco'){
+    if($method == "GET"){ //  ----> http://localhost:8080/banco/
         $db = Database::conectar();
 
         $query = $db->query("SELECT * FROM banco");
@@ -38,7 +38,7 @@ if(isset($base) && $base == 'usuarios'){
 }
 
 if(isset($add) && $add == 'adicionar'){ 
-    if($method === 'POST'){
+    if($method === 'POST'){ //  ----> http://localhost:8080/banco/adicionar
         $dados = json_decode(file_get_contents('php://input'), true);
         
         if(isset($dados['CNPJ']) && isset($dados['email']) && isset($dados['ceo']) && isset($dados['data_fundacao']) && isset($dados['numero']) && isset($dados['cep'])){
@@ -48,9 +48,8 @@ if(isset($add) && $add == 'adicionar'){
             $data_fundacao = $dados['data_fundacao'];
             $numero = $dados['numero'];
             $cep = $dados['cep'];
-            $numero_funcionarios = $dados['numero_funcionarios'] ?? NULL;
-            $complemento = $dados['complemento'] ?? NULL;
-
+            $complemento = isset($dados['complemento']) ? $dados['complemento'] : NULL;
+            $numero_funcionarios = isset($dados['numero_funcionarios']) ? $dados['numero_funcionarios'] : NULL;
             $db = Database::conectar();
 
             $addUsuarioStmt = $db->prepare('INSERT INTO banco("CNPJ", "email", "ceo", "data_fundacao", "numero", "cep", "numero_funcionarios", "complemento") VALUES (:cnpj, :email, :ceo, :data_fundacao, :numero, :cep, :numero_funcionarios, :complemento)');
