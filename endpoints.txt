@@ -1,0 +1,33 @@
+			  Endpoints Da API
+
+
+-------------- Requisições GET ------------------
+
+http://localhost:8080/banco/listar/conta
+http://localhost:8080/banco/listar/gerente
+http://localhost:8080/banco/listar/bloqueio
+
+
+-------------- Requisições POST ------------------
+
+http://localhost:8080/banco/adicionar/conta
+http://localhost:8080/banco/adicionar/gerente
+http://localhost:8080/banco/adicionar/bloqueio
+
+http://localhost:8080/banco/remover/conta
+http://localhost:8080/banco/remover/gerente
+http://localhost:8080/banco/remover/bloqueio
+
+http://localhost:8080/banco/atualizar/conta
+http://localhost:8080/banco/atualizar/gerente
+http://localhost:8080/banco/atualizar/bloqueio
+
+-------------- Transação ---------------------------
+
+// 1. adiciona um novo gerente
+// 2. atualiza todas as contas do gerente solicitado da remoção para o novo o COD_GERENCIA
+// 3. Remove gerente 
+// 4. mostrar todas as contas do novo gerente
+
+http://localhost:8080/banco/mudar_gerente_trans
+

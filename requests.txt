@@ -1,0 +1,97 @@
+
+
+
+
+------------------------------- Remoção
+
+curl -X POST http://localhost:8080/banco/remover/bloqueio \
+-H "Content-Type: application/json" \
+-d '{
+    "NUMERO": "CONTA001",
+    "ID_CLIENTE": 1
+}'
+
+curl -X POST http://localhost:8080/banco/remover/gerente \
+-H "Content-Type: application/json" \
+-d '{
+    "COD_GERENCIA": "GER001"
+}'
+
+curl -X POST http://localhost:8080/banco/remover/conta \
+-H "Content-Type: application/json" \
+-d '{
+    "NUMERO": "CONTA001"
+}'
+
+----------------------------- Atulizar
+
+curl -X POST http://localhost:8080/banco/atualizar/bloqueio \
+-H "Content-Type: application/json" \
+-d '{
+    "NUMERO": "CONTA001",
+    "ID_CLIENTE": 1,
+    "Status": "TRUE",
+    "Data": "2024-10-20",
+    "COD_GERENCIA": "GER003"
+}'
+
+curl -X POST http://localhost:8080/banco/atualizar/conta \
+-H "Content-Type: application/json" \
+-d '{
+    "NUMERO": "CONTA001",
+    "Status": "FALSE",
+    "saldo": 15000.00,
+    "Taxa": 0.04
+}'
+
+curl -X POST http://localhost:8080/banco/atualizar/gerente \
+-H "Content-Type: application/json" \
+-d '{
+    "COD_GERENCIA": "GER001",
+    "CPF_funcionario": "33333333333"
+}'
+
+
+---------------------------- Adicionar
+
+curl -X POST http://localhost:8080/banco/adicionar/gerente \
+-H "Content-Type: application/json" \
+-d '{
+    "COD_GERENCIA": "GER011",
+    "CPF_funcionario": "99009909999"
+}'
+
+
+curl -X POST http://localhost:8080/banco/adicionar/conta \
+-H "Content-Type: application/json" \
+-d '{
+    "NUMERO": "CONTA009",
+    "Status": "TRUE",
+    "data_abertura": "2024-10-20",
+    "Conjunta": "FALSE",
+    "senha": "senha009",
+    "COD_GERENCIA": "GER003",
+    "Numero_agencia": "AG003",
+    "ID_Cliente": 1,
+    "saldo": 5000.00,
+    "Taxa": 0.05
+}'
+
+curl -X POST http://localhost:8080/banco/adicionar/bloqueio \
+-H "Content-Type: application/json" \
+-d '{
+    "Status": "TRUE",
+    "Data": "2024-10-20",
+    "NUMERO": "CONTA002",
+    "ID_CLIENTE": 1,
+    "COD_GERENCIA": "GER001"
+}'
+-------------------------------- Transação
+
+curl -X POST http://localhost:8080/banco/mudar_gerente_trans \
+-H "Content-Type: application/json" \
+-d '{
+    "COD_GERENCIA_NEW": "GER010",
+    "CPF_funcionario_NEW": "99999999900",
+    "COD_GERENCIA_RM": "GER002"
+}'
